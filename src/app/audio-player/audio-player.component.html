@@ -1,0 +1,32 @@
+<div
+  class="flex items-center bg-white w-80 h-20 rounded-xl shadow-sm p-2 gap-2"
+>
+  <button
+    class="flex justify-center items-center rounded-full bg-indigo-500 hover:bg-indigo-600 w-12 h-12"
+    (click)="onToggleAudioPlaying()"
+  >
+    <ng-container *ngIf="!audioIsPlaying; else audioIsPaused">
+      <img class="w-3" src="assets/icons/play.svg" alt="Play" />
+    </ng-container>
+    <ng-template #audioIsPaused>
+      <img class="w-4" src="assets/icons/pause.svg" alt="Pause" />
+    </ng-template>
+  </button>
+
+  <div class="flex flex-col grow h-full">
+    <div class="h-4/5 cursor-pointer" id="waveform"></div>
+    <div class="flex h-1/5 text-xs text-indigo-500 italic">
+      <div>
+        <span *ngIf="audioIsPlaying">{{ audioCurrentTime }} / </span>
+        <span>{{ audioDuration }}</span>
+      </div>
+      <button
+        class="ml-auto mr-1"
+        *ngIf="audioIsPlaying"
+        (click)="onChangeAudioSpeed()"
+      >
+        {{ audioPlayBackSpeed }}x
+      </button>
+    </div>
+  </div>
+</div>

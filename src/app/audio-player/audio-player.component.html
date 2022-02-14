@@ -17,11 +17,13 @@
     <div class="h-4/5 cursor-pointer" id="waveform"></div>
     <div class="flex h-1/5 text-xs text-indigo-500 italic">
       <div>
-        <span *ngIf="audioIsPlaying">{{ audioCurrentTime }} / </span>
+        <span *ngIf="audioCurrentTime !== '00:00'"
+          >{{ audioCurrentTime }} /
+        </span>
         <span>{{ audioDuration }}</span>
       </div>
       <button
-        class="ml-auto mr-1"
+        class="ml-auto mr-1 font-bold"
         *ngIf="audioIsPlaying"
         (click)="onChangeAudioSpeed()"
       >
